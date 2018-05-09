@@ -1,6 +1,8 @@
 package rentaswag.website;
 
+import javax.persistence.Entity;
 
+@Entity
 public class Product {
 	
 	private String name; 
