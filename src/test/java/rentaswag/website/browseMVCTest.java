@@ -12,7 +12,7 @@ public class browseMVCTest {
 	@Resource MockMvc mvc; 
 	
 	@Test
-	public void shouldDisplayCart() throws Exception {
-		mvc.perform(get("/product")).andExpect(status().isOk()); 
+	public void shouldDisplayProducts() throws Exception {
+		mvc.perform(get("/products")).andExpect(status().isOk()); 
 	}
 }
