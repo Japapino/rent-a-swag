@@ -13,6 +13,6 @@ public class browseMVCTest {
 	
 	@Test
 	public void shouldDisplayCart() throws Exception {
-		mvc.perform(get("/cart")).andExpect(status().isOk()); 
+		mvc.perform(get("/product")).andExpect(status().isOk()); 
 	}
 }

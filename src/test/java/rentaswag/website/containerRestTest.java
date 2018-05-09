@@ -15,8 +15,8 @@ public class containerRestTest {
 	private TestRestTemplate restTemplate; 
 	
 	@Test
-	public void shouldDisplayCart() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/cart", String.class); 
+	public void shouldDisplayProducts() {
+		ResponseEntity<String> response = restTemplate.getForEntity("/product", String.class); 
 		
 		HttpStatus status = response.getStatusCode(); 
 		
