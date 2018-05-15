@@ -1,33 +1,48 @@
 package rentaswag.website;
 
-import java.util.Collection;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertThat;
+
+import java.util.Collections;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.nullValue;
-import static org.hamcrest.Matchers.not;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.any;
+import static org.hamcrest.Matchers.contains;
 
 
 public class browseControllerTest {
-//	@InjectMocks
+	@InjectMocks
 	BrowseController underTest; 
-//	
-//	@Mock
-//	private Product product; 
+	
+	@Mock
+	private ProductRepository productRepo; 
+	
+	@Mock
+	private Product product; 
 	
 	@Before
 	public void setup() {
-		underTest = new BrowseController(); 
+//		underTest = new BrowseController(); 
+		MockitoAnnotations.initMocks(this);
 	}
 	
 	@Test
 	public void shouldFindAllProducts() {
-		Collection<Product> result = underTest.findAllProducts(); 
+//		Collection<Product> result = underTest.findAllProducts(); 
+//		assertThat(result.size(), is(greaterThan(0)));
+		when(productRepo.findAll()).thenReturn(Collections.singleton(product));
 		
-		assertThat(result.size(), is(greaterThan(0)));
+		Iterable<Product> result = underTest.findAllProducts(); 
+		
+		assertThat(result, contains(any(Product.class))); 
+		
 	}
 	
 	@Test
@@ -35,5 +50,12 @@ public class browseControllerTest {
 		Product result = underTest.findOneById(1L); 
 		
 		assertThat(result, is(not(nullValue()))); 
+	}
+	
+	@Test
+	public void shouldFindAllProductsInDataBase() {
+		when(productRepo.findAll()).thenReturn(Collections.singleton(product)); 
+		Iterable<Product> result = underTest.findAllProducts();
+		assertThat(result, contains(product)); 
 	}
 }
