@@ -32,7 +32,11 @@ public class BrowseMVCTest {
 	@Test
 	public void shouldDisplayOneProduct() throws Exception {
 		when(productRepo.findOne(1L)).thenReturn(new Product("test"));
-		
 		mvc.perform(get("/products/1")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void shouldReturnNotFoundForBadProductId() throws Exception {
+		mvc.perform(get("/products/1")).andExpect(status().isNotFound());
 	}
 }
