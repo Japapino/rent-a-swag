@@ -1,9 +1,10 @@
 package rentaswag.website;
 
+import static org.hamcrest.Matchers.any;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 import java.util.Collections;
 
@@ -12,9 +13,6 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.when;
-import static org.hamcrest.Matchers.any;
-import static org.hamcrest.Matchers.contains;
 
 
 public class BrowseControllerTest {
@@ -47,9 +45,11 @@ public class BrowseControllerTest {
 	
 	@Test
 	public void shouldFindProductById() {
-		Product result = underTest.findOneById(1L); 
+		when(productRepo.findOne(1L)).thenReturn(product); 
 		
-		assertThat(result, is(not(nullValue()))); 
+		Product result = underTest.findProductById(1L); 
+		
+		assertThat(result, is(product)); 
 	}
 	
 	@Test
