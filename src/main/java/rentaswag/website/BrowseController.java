@@ -15,9 +15,6 @@ public class BrowseController {
 	private ProductRepository productRepo; 
 	
 	@RequestMapping("/products")
-//	public Collection<Product> findAllProducts() {
-//		return Collections.singleton(new Product("Test")); 
-//	}
 	public Iterable<Product> findAllProducts() {
 		return productRepo.findAll(); 
 	}
