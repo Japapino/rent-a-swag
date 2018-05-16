@@ -1,6 +1,7 @@
 package rentaswag.website;
 
 import javax.annotation.Resource;
+import static org.hamcrest.Matchers.greaterThan;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,9 +23,14 @@ public class containerRestTest {
 	@Test
 	public void shouldDisplayProducts() {
 		ResponseEntity<String> response = restTemplate.getForEntity("/products", String.class); 
-		
 		HttpStatus status = response.getStatusCode(); 
-		
 		assertThat(status, is(HttpStatus.OK)); 
 		}
+	
+//	@Test
+//	public void shouldCreateNewProduct() {
+//		Product product = new Product("test");
+//		ResponseEntity<Product> response = restTemplate.postForEntity("/products", product, Product.class);
+//		assertThat(response.getBody().getId(), is(greaterThan(0L)));
+//	}
 }
