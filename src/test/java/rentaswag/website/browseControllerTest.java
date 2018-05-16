@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.contains;
 
 
-public class browseControllerTest {
+public class BrowseControllerTest {
 	@InjectMocks
 	BrowseController underTest; 
 	

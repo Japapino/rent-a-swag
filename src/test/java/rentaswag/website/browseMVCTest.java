@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
-public class browseMVCTest {
+public class BrowseMVCTest {
 	
 	@Resource 
 	private MockMvc mvc; 
