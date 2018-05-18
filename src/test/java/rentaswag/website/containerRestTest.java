@@ -16,7 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class containerRestTest {
+public class ContainerRestTest {
+	
 	@Resource
 	private TestRestTemplate restTemplate; 
 	
@@ -27,10 +28,10 @@ public class containerRestTest {
 		assertThat(status, is(HttpStatus.OK)); 
 		}
 	
-//	@Test
-//	public void shouldCreateNewProduct() {
-//		Product product = new Product("test");
-//		ResponseEntity<Product> response = restTemplate.postForEntity("/products", product, Product.class);
-//		assertThat(response.getBody().getId(), is(greaterThan(0L)));
-//	}
+	@Test
+	public void shouldCreateNewProduct() {
+		Product product = new Product("test");
+		ResponseEntity<Product> response = restTemplate.postForEntity("/products", product, Product.class);
+		assertThat(response.getBody().getId(), is(greaterThan(0L)));
+	}
 }
