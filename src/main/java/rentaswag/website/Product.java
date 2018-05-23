@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Product {
 	
 	@Id
-	@GeneratedValue
+//	@GeneratedValue //caused container rest test to fail
 	private long id; 
 	
 	private String name; 
