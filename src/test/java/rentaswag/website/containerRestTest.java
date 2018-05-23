@@ -21,6 +21,7 @@ public class ContainerRestTest {
 	@Resource
 	private TestRestTemplate restTemplate; 
 	
+	//neither not yet passing as of 7c64be...fe01a55
 	@Test
 	public void shouldDisplayProducts() {
 		ResponseEntity<String> response = restTemplate.getForEntity("/products", String.class); 
